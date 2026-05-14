@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beauty Salon – Customer Portal</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<style>
+:root {
+  --rose: #d4698a;
+  --rose-light: #f5d0de;
+  --rose-dark: #a84b6a;
+  --cream: #fdf6f0;
+  --text: #2a1a1f;
+  --muted: #7a5f68;
+  --white: #ffffff;
+  --gold: #c9a96e;
+  --shadow: 0 8px 40px rgba(212,105,138,0.12);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* ── NAV ── */
+nav {
+  position: sticky; top:0; z-index:100;
+  background: rgba(253,246,240,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(212,105,138,0.15);
+  padding: 1rem 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem; color: var(--rose-dark);
+  letter-spacing: -0.5px;
+}
+.logo span { color: var(--gold); font-style: italic; }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  text-decoration: none; color: var(--muted); font-size: 0.9rem;
+  font-weight: 500; transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--rose); }
+.nav-cta {
+  background: var(--rose); color: white;
+  border: none; padding: 0.6rem 1.4rem;
+  border-radius: 50px; cursor: pointer; font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem; font-weight: 500; transition: all 0.2s;
+}
+.nav-cta:hover { background: var(--rose-dark); transform: translateY(-1px); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 88vh;
+  display: grid; grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 4rem 6rem;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; right: -100px; top: -100px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(212,105,138,0.15) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.hero-text h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 4rem; line-height: 1.1;
+  color: var(--text); margin-bottom: 1.5rem;
+}
+.hero-text h1 em { color: var(--rose); font-style: italic; }
+.hero-text p {
+  color: var(--muted); font-size: 1.1rem; line-height: 1.7;
+  max-width: 420px; margin-bottom: 2.5rem;
+}
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn-hero {
+  padding: 0.9rem 2rem; border-radius: 50px;
+  font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 500;
+  cursor: pointer; border: none; transition: all 0.25s; text-decoration: none;
+  display: inline-flex; align-items: center; gap: 0.5rem;
+}
+.btn-primary { background: var(--rose); color: white; }
+.btn-primary:hover { background: var(--rose-dark); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(212,105,138,0.4); }
+.btn-outline { background: transparent; color: var(--rose); border: 2px solid var(--rose); }
+.btn-outline:hover { background: var(--rose-light); }
+
+.hero-visual {
+  display: flex; flex-direction: column; gap: 1rem;
+  align-items: center; position: relative;
+}
+.hero-card-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+  transform: rotate(-3deg);
+}
+.mini-card {
+  background: white; border-radius: 20px; padding: 1.5rem;
+  box-shadow: var(--shadow); animation: floatUp 3s ease-in-out infinite;
+}
+.mini-card:nth-child(2) { animation-delay: 0.5s; }
+.mini-card:nth-child(3) { animation-delay: 1s; }
+.mini-card:nth-child(4) { animation-delay: 1.5s; }
+.mini-card .icon {
+  font-size: 2.8rem;
+  margin-bottom: 0.8rem;
+  width: 56px; height: 56px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--rose-light);
+  border-radius: 14px;
+}
+.mini-card h4 { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--text); }
+.mini-card p { font-size: 0.82rem; color: var(--muted); margin-top: 0.25rem; }
+.mini-card .price { color: var(--rose); font-weight: 600; font-size: 0.9rem; margin-top: 0.5rem; }
+@keyframes floatUp {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* ── SECTION HEADER ── */
+.section { padding: 5rem 6rem; }
+.section-header { text-align: center; margin-bottom: 3rem; }
+.section-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem; color: var(--text);
+}
+.section-header p { color: var(--muted); margin-top: 0.5rem; font-size: 1rem; }
+.divider {
+  width: 60px; height: 3px;
+  background: linear-gradient(90deg, var(--rose), var(--gold));
+  margin: 1rem auto; border-radius: 2px;
+}
+
+/* ── SERVICES GRID ── */
+.services-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+.service-card {
+  background: white; border-radius: 24px; overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  transition: all 0.3s; cursor: pointer;
+}
+.service-card:hover { transform: translateY(-8px); box-shadow: var(--shadow); }
+.service-img {
+  height: 260px;
+  background: linear-gradient(135deg, var(--rose-light), var(--cream));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 3.5rem; overflow: hidden;
+}
+.service-body { padding: 1.8rem; }
+.service-body h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--text); }
+.service-body p { color: var(--muted); font-size: 0.95rem; margin-top: 0.5rem; line-height: 1.6; }
+.service-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: 1.2rem; padding-top: 1.2rem;
+  border-top: 1px solid rgba(212,105,138,0.1);
+}
+.service-price { color: var(--rose); font-weight: 700; font-size: 1.3rem; }
+.book-btn {
+  background: var(--rose); color: white; border: none;
+  padding: 0.65rem 1.3rem; border-radius: 50px;
+  font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 500;
+  cursor: pointer; transition: all 0.2s;
+}
+.book-btn:hover { background: var(--rose-dark); }
+
+/* ── BOOKING MODAL ── */
+.modal-overlay {
+  display: none; position: fixed; inset:0;
+  background: rgba(42,26,31,0.5); backdrop-filter: blur(4px);
+  z-index: 1000; align-items: center; justify-content: center;
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: white; border-radius: 24px;
+  padding: 2.5rem; max-width: 480px; width: 90%;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.2);
+  animation: slideUp 0.3s ease;
+}
+@keyframes slideUp { from { transform: translateY(30px); opacity:0; } to { transform: translateY(0); opacity:1; } }
+.modal h2 { font-family: 'Playfair Display', serif; color: var(--text); margin-bottom: 1.5rem; }
+.modal-close {
+  float: right; background: none; border: none;
+  font-size: 1.3rem; color: var(--muted); cursor: pointer;
+}
+.form-group { margin-bottom: 1.2rem; }
+.form-group label { display: block; color: var(--muted); font-size: 0.85rem; margin-bottom: 0.4rem; font-weight: 500; }
+.form-group input,
+.form-group select {
+  width: 100%; padding: 0.8rem 1rem;
+  border: 1.5px solid rgba(212,105,138,0.2); border-radius: 10px;
+  font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+  transition: border-color 0.2s;
+  background: var(--cream); color: var(--text);
+}
+.form-group input:focus,
+.form-group select:focus {
+  outline: none; border-color: var(--rose);
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.btn-confirm {
+  width: 100%; padding: 1rem; background: var(--rose); color: white;
+  border: none; border-radius: 12px; font-family: 'DM Sans', sans-serif;
+  font-size: 1rem; font-weight: 500; cursor: pointer; margin-top: 0.5rem;
+  transition: all 0.2s;
+}
+.btn-confirm:hover { background: var(--rose-dark); transform: translateY(-1px); }
+
+/* ── REVIEWS ── */
+.reviews-section { background: white; }
+.reviews-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.review-card {
+  background: var(--cream); border-radius: 16px; padding: 1.5rem;
+  position: relative;
+}
+.review-card::before {
+  content: '"'; font-family: 'Playfair Display', serif;
+  font-size: 5rem; color: var(--rose-light);
+  position: absolute; top: -10px; left: 15px; line-height: 1;
+}
+.stars { color: var(--gold); font-size: 0.85rem; margin-bottom: 0.8rem; }
+.review-text { color: var(--muted); font-size: 0.9rem; line-height: 1.6; font-style: italic; }
+.reviewer { margin-top: 1rem; font-weight: 600; font-size: 0.85rem; color: var(--text); }
+
+/* ── ADD REVIEW FORM ── */
+.add-review {
+  max-width: 600px; margin: 3rem auto 0;
+  background: white; padding: 2rem; border-radius: 20px;
+  box-shadow: var(--shadow);
+}
+.add-review h3 { font-family: 'Playfair Display', serif; color: var(--text); margin-bottom: 1.5rem; }
+.star-picker { display: flex; gap: 0.3rem; margin-bottom: 1rem; }
+.star-picker span { font-size: 1.5rem; cursor: pointer; transition: transform 0.1s; color: #ddd; }
+.star-picker span.active, .star-picker span:hover { color: var(--gold); transform: scale(1.2); }
+textarea.form-control {
+  width: 100%; padding: 0.8rem 1rem;
+  border: 1.5px solid rgba(212,105,138,0.2); border-radius: 10px;
+  font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+  min-height: 100px; resize: vertical;
+  background: var(--cream); color: var(--text);
+  transition: border-color 0.2s;
+}
+textarea.form-control:focus { outline: none; border-color: var(--rose); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--text); color: rgba(255,255,255,0.7);
+  padding: 3rem 6rem; text-align: center;
+}
+footer .logo-footer {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem; color: #ffffff; margin-bottom: 1rem;
+}
+footer .logo-footer span {
+  color: var(--gold);
+  font-style: italic;
+}
+footer p { font-size: 0.85rem; line-height: 1.7; }
+footer .social { display: flex; gap: 1rem; justify-content: center; margin-top: 1.5rem; }
+footer .social a {
+  color: rgba(255,255,255,0.5); font-size: 1.1rem; transition: color 0.2s;
+}
+footer .social a:hover { color: var(--rose-light); }
+
+/* ── SUCCESS TOAST ── */
+.toast {
+  position: fixed; bottom: 2rem; right: 2rem;
+  background: #2a7a4f; color: white;
+  padding: 1rem 1.5rem; border-radius: 12px;
+  font-size: 0.9rem; display: flex; align-items: center; gap: 0.5rem;
+  transform: translateY(100px); opacity: 0; transition: all 0.4s;
+  z-index: 9999;
+}
+.toast.show { transform: translateY(0); opacity: 1; }
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .hero { grid-template-columns:1fr; padding: 3rem 2rem; text-align:center; }
+  .hero-visual { display: none; }
+  .hero-text p { margin: 0 auto 2.5rem; }
+  .hero-actions { justify-content: center; }
+  .section { padding: 3rem 2rem; }
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  .reviews-grid { grid-template-columns: 1fr; }
+  nav { padding: 1rem; }
+  .nav-links { display: none; }
+  footer { padding: 2rem; }
+}
+@media(max-width:600px){
+  .services-grid { grid-template-columns: 1fr; }
+  .hero-text h1 { font-size: 2.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo"></div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-cta" onclick="openModal()"><i class="fas fa-calendar-plus"></i> Book Now</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <h1>Your Beauty,<br>Our <em>Passion</em></h1>
+    <p>Discover a world of luxurious salon experiences crafted exclusively for you. From relaxing treatments to bold transformations — we bring out the best in you.</p>
+    <div class="hero-actions">
+      <a href="#services" class="btn-hero btn-primary"><i class="fas fa-sparkles"></i> Explore Services</a>
+      <a href="#reviews" class="btn-hero btn-outline"><i class="fas fa-star"></i> See Reviews</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-card-grid">
+      <div class="mini-card">
+        <div class="icon" style="background:rgba(212,105,138,0.15);">💆</div>
+        <h4>Hair Spa</h4>
+        <p>Deep conditioning</p>
+        <div class="price">LKR 2,500</div>
+      </div>
+      <div class="mini-card">
+        <div class="icon" style="background:rgba(201,169,110,0.15);">💅</div>
+        <h4>Manicure</h4>
+        <p>Nail artistry</p>
+        <div class="price">LKR 1,200</div>
+      </div>
+      <div class="mini-card">
+        <div class="icon" style="background:rgba(100,180,150,0.15);">✂️</div>
+        <h4>Haircut</h4>
+        <p>Style & trim</p>
+        <div class="price">LKR 800</div>
+      </div>
+      <div class="mini-card">
+        <div class="icon" style="background:rgba(150,120,200,0.15);">🧖</div>
+        <h4>Facial</h4>
+        <p>Glow treatment</p>
+        <div class="price">LKR 3,000</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section" id="services">
+  <div class="section-header">
+    <h2>Our Services</h2>
+    <div class="divider"></div>
+    <p>Handcrafted treatments for every occasion</p>
+  </div>
+  <div class="services-grid" id="servicesGrid">
+    <!-- Populated by JS -->
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="section reviews-section" id="reviews">
+  <div class="section-header">
+    <h2>What Our Clients Say</h2>
+    <div class="divider"></div>
+    <p>Real experiences, real transformations</p>
+  </div>
+  <div class="reviews-grid" id="reviewsGrid"></div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="logo-footer">Beauty <span>Salon</span></div>
+  <p>123 Flower Road, Colombo 03 &nbsp;|&nbsp; +94 11 234 5678 &nbsp;|&nbsp; hello@beautysalon.lk</p>
+  <div class="social">
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-tiktok"></i></a>
+  </div>
+  <p style="margin-top:2rem;font-size:0.75rem;">© 2026 All rights reserved.</p>
+</footer>
+
+<!-- BOOKING MODAL -->
+<div class="modal-overlay" id="bookingModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <h2>Book a Service</h2>
+    <div class="form-group">
+      <label>Select Service</label>
+      <select id="modalService">
+        <option value="">Choose a service…</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Select Stylist</label>
+      <select id="modalEmployee">
+        <option value="">Choose a stylist…</option>
+        <option>Nimal Perera – Hair Specialist</option>
+        <option>Kamala Silva – Skin Care Expert</option>
+        <option>Ravi Fernando – Nail Artist</option>
+        <option>Dilani Jayasinghe – Beauty Therapist</option>
+      </select>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Preferred Date</label>
+        <input type="date" id="modalDate">
+      </div>
+      <div class="form-group">
+        <label>Preferred Time</label>
+        <input type="time" id="modalTime">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Your Name</label>
+      <input type="text" id="modalName" placeholder="Full name">
+    </div>
+    <button class="btn-confirm" onclick="confirmBooking()"><i class="fas fa-check"></i> Confirm Booking</button>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ── Sample data (in real app, comes from backend)
+const services = [
+  { id:1, icon:'✂️', name:'Precision Haircut', desc:'Expert cut & style tailored to your face shape and lifestyle.', price:800, duration:'45 min',
+    img:'https://images.unsplash.com/photo-1596728325488-58c87691e9af?w=600&q=80' },
+  { id:2, icon:'💆', name:'Hair Spa Treatment', desc:'Deep conditioning therapy to restore shine and strength.', price:2500, duration:'60 min',
+    img:'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&q=80' },
+  { id:3, icon:'🎨', name:'Hair Colouring', desc:'Full colour, highlights, balayage — your vision, our craft.', price:4500, duration:'90 min',
+    img:'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&q=80' },
+  { id:4, icon:'🧖', name:'Glow Facial', desc:'Custom facial to hydrate, cleanse, and revive dull skin.', price:3000, duration:'60 min',
+    img:'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&q=80' },
+  { id:5, icon:'💅', name:'Luxury Manicure', desc:'Nail shaping, cuticle care, and vibrant polish finish.', price:1200, duration:'45 min',
+    img:'https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&q=80' },
+  { id:6, icon:'👣', name:'Pedicure Bliss', desc:'Foot soak, scrub, and pamper treatment from heel to toe.', price:1500, duration:'60 min',
+    img:'https://images.unsplash.com/photo-1519415510236-718bdfcd89c8?w=600&q=80' },
+];
+
+const sampleReviews = [
+  { name:'Asha Mendis', stars:5, text:'Absolutely loved my hair spa! Left feeling like a new person. The staff is so caring and professional.' },
+  { name:'Priya N.', stars:5, text:'Best manicure I\'ve ever had in Colombo. The attention to detail is incredible. Will definitely come back!' },
+  { name:'Shehan De Silva', stars:4, text:'Great facial treatment, very relaxing environment. Booking was easy and the stylist was very knowledgeable.' },
+];
+
+let userRating = 0;
+
+// ── Render Services
+const grid = document.getElementById('servicesGrid');
+const modalSvc = document.getElementById('modalService');
+services.forEach(s => {
+  grid.innerHTML += `
+    <div class="service-card">
+      <div class="service-img" style="padding:0;overflow:hidden;">
+        <img src="${s.img}" alt="${s.name}" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s;" onmouseover="this.style.transform='scale(1.07)'" onmouseout="this.style.transform='scale(1)'">
+      </div>
+      <div class="service-body">
+        <h3>${s.name}</h3>
+        <p>${s.desc}</p>
+        <div class="service-footer">
+          <span class="service-price">LKR ${s.price.toLocaleString()}</span>
+          <button class="book-btn" onclick="openModal(${s.id})">Book Now</button>
+        </div>
+      </div>
+    </div>`;
+  modalSvc.innerHTML += `<option value="${s.id}">` + s.name + ` – LKR ${s.price.toLocaleString()}</option>`;
+});
+
+// ── Render Reviews
+function renderReviews() {
+  const rg = document.getElementById('reviewsGrid');
+  const all = JSON.parse(localStorage.getItem('reviews') || 'null') || sampleReviews;
+  rg.innerHTML = all.map(r => `
+    <div class="review-card">
+      <div class="stars">${'★'.repeat(r.stars)}${'☆'.repeat(5-r.stars)}</div>
+      <p class="review-text">${r.text}</p>
+      <p class="reviewer">— ${r.name}</p>
+    </div>`).join('');
+}
+renderReviews();
+
+// ── Star Picker
+const stars = document.querySelectorAll('#starPicker span');
+stars.forEach(s => {
+  s.addEventListener('click', () => {
+    userRating = +s.dataset.v;
+    stars.forEach((st,i) => st.classList.toggle('active', i < userRating));
+  });
+  s.addEventListener('mouseover', () => {
+    stars.forEach((st,i) => st.classList.toggle('active', i <= +s.dataset.v-1));
+  });
+  s.addEventListener('mouseout', () => {
+    stars.forEach((st,i) => st.classList.toggle('active', i < userRating));
+  });
+});
+
+function submitReview(){
+  const name = document.getElementById('reviewName').value.trim();
+  const text = document.getElementById('reviewText').value.trim();
+  if(!name||!text||!userRating){ showToast('⚠️ Please fill all fields and select a rating.','#c0392b'); return; }
+  const all = JSON.parse(localStorage.getItem('reviews') || 'null') || [...sampleReviews];
+  all.unshift({name, stars:userRating, text});
+  localStorage.setItem('reviews', JSON.stringify(all));
+  renderReviews();
+  document.getElementById('reviewName').value='';
+  document.getElementById('reviewText').value='';
+  userRating=0;
+  stars.forEach(s=>s.classList.remove('active'));
+  showToast('✨ Thank you for your review!','#2a7a4f');
+}
+
+// ── Modal
+function openModal(serviceId){
+  if(serviceId) document.getElementById('modalService').value = serviceId;
+  // Set min date to today
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('modalDate').min = today;
+  document.getElementById('bookingModal').classList.add('open');
+}
+function closeModal(){ document.getElementById('bookingModal').classList.remove('open'); }
+
+function confirmBooking(){
+  const svc = document.getElementById('modalService').value;
+  const emp = document.getElementById('modalEmployee').value;
+  const date = document.getElementById('modalDate').value;
+  const time = document.getElementById('modalTime').value;
+  const name = document.getElementById('modalName').value.trim();
+  if(!svc||!emp||!date||!time||!name){ showToast('⚠️ Please fill in all booking details.','#c0392b'); return; }
+  closeModal();
+  showToast('🎉 Booking confirmed! See you soon, ' + name + '!','#2a7a4f');
+}
+
+// ── Toast
+function showToast(msg, color='#2a7a4f'){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.background = color;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 3500);
+}
+
+// Close modal on overlay click
+document.getElementById('bookingModal').addEventListener('click', e=>{
+  if(e.target.id==='bookingModal') closeModal();
+});
+</script>
+</body>
+</html>
