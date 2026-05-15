@@ -465,7 +465,7 @@ services.forEach(s => {
   grid.innerHTML += `
     <div class="service-card">
       <div class="service-img" style="padding:0;overflow:hidden;">
-        <img src="${s.img}" alt="${s.name}" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s;" onmouseover="this.style.transform='scale(1.07)'" onmouseout="this.style.transform='scale(1)'">
+        <img src="${s.img}" alt="${s.name}" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s;" onmouseover="this.style.transform='scale(1.07)'" onmouseout="this.style.transform='scale(1)'" onerror="this.outerHTML='<i class=&quot;fas fa-spa&quot; style=&quot;color:var(--rose);&quot;></i>'">
       </div>
       <div class="service-body">
         <h3>${s.name}</h3>

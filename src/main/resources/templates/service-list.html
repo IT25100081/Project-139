@@ -52,7 +52,7 @@
             <div id="svcCardGrid" class="svc-card-grid">
                 <div class="svc-thumb-card" th:each="service : ${services}">
                   <div class="svc-thumb-img">
-                    <img th:if="${service.imageUrl != null and service.imageUrl != ''}" th:src="@{${service.imageUrl}}" th:alt="${service.name}">
+                    <img th:if="${service.imageUrl != null and service.imageUrl != ''}" th:src="@{${service.imageUrl}}" th:alt="${service.name}" onerror="this.outerHTML='<i class=&quot;fas fa-spa&quot;></i>'">
                     <i th:unless="${service.imageUrl != null and service.imageUrl != ''}" class="fas fa-spa"></i>
                   </div>
                   <div class="svc-thumb-body">
@@ -90,7 +90,7 @@
                         <tbody>
                             <tr th:each="service : ${services}">
                                 <td>
-                                    <img th:if="${service.imageUrl != null and service.imageUrl != ''}" th:src="@{${service.imageUrl}}" style="width:42px;height:42px;object-fit:cover;border-radius:8px;border:1px solid var(--border);" alt="Service Image">
+                                    <img th:if="${service.imageUrl != null and service.imageUrl != ''}" th:src="@{${service.imageUrl}}" style="width:42px;height:42px;object-fit:cover;border-radius:8px;border:1px solid var(--border);" alt="Service Image" onerror="this.outerHTML='<div style=&quot;width:42px;height:42px;border-radius:8px;background:var(--rose-soft);display:flex;align-items:center;justify-content:center;&quot;><i class=&quot;fas fa-spa&quot; style=&quot;color:var(--rose);&quot;></i></div>'">
                                     <div th:unless="${service.imageUrl != null and service.imageUrl != ''}" style="width:42px;height:42px;border-radius:8px;background:var(--rose-soft);display:flex;align-items:center;justify-content:center;">
                                         <i class="fas fa-spa" style="color:var(--rose);"></i>
                                     </div>
