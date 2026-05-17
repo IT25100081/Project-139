@@ -1,6 +1,0 @@
-1,john_doe,password123,john.doe@email.com,user
-2,jane_smith,password456,jane.smith@email.com,user
-3,mike_wilson,password789,mike.wilson@email.com,user
-4,sarah_jones,password101,sarah.jones@email.com,user
-5,david_brown,password202,david.brown@email.com ,user
-6,admin,admin123,admin@email.com,admin

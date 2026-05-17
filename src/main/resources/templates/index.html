@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beauty Salon – Customer Portal</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="stylesheet" th:href="@{/css/customer-style.css}">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Beauty <span>Salon</span></div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-cta" onclick="openModal()"><i class="fas fa-calendar-plus"></i> Book Now</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <h1>Your Beauty,<br>Our <em>Passion</em></h1>
+    <p>Discover a world of luxurious salon experiences crafted exclusively for you. From relaxing treatments to bold transformations — we bring out the best in you.</p>
+    <div class="hero-actions">
+      <a href="#services" class="btn-hero btn-primary"><i class="fas fa-sparkles"></i> Explore Services</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-card-grid">
+      <div class="mini-card">
+        <div class="icon" style="background:rgba(212,105,138,0.15);">💆</div>
+        <h4>Hair Spa</h4>
+        <p>Deep conditioning</p>
+        <div class="price">LKR 2,500</div>
+      </div>
+      <div class="mini-card">
+        <div class="icon" style="background:rgba(201,169,110,0.15);">💅</div>
+        <h4>Manicure</h4>
+        <p>Nail artistry</p>
+        <div class="price">LKR 1,200</div>
+      </div>
+      <div class="mini-card">
+        <div class="icon" style="background:rgba(100,180,150,0.15);">✂️</div>
+        <h4>Haircut</h4>
+        <p>Style & trim</p>
+        <div class="price">LKR 800</div>
+      </div>
+      <div class="mini-card">
+        <div class="icon" style="background:rgba(150,120,200,0.15);">🧖</div>
+        <h4>Facial</h4>
+        <p>Glow treatment</p>
+        <div class="price">LKR 3,000</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section" id="services">
+  <div class="section-header">
+    <h2>Our Services</h2>
+    <div class="divider"></div>
+    <p>Handcrafted treatments for every occasion</p>
+  </div>
+  <div class="services-grid" id="servicesGrid">
+    <div class="service-card" th:each="service : ${services}">
+      <div class="service-img" style="padding:0;overflow:hidden;">
+        <img th:if="${service.imageUrl != null and service.imageUrl != ''}" th:src="@{${service.imageUrl}}" th:alt="${service.name}" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s;" onmouseover="this.style.transform='scale(1.07)'" onmouseout="this.style.transform='scale(1)'" onerror="this.outerHTML='<i class=&quot;fas fa-spa&quot; style=&quot;color:var(--rose);&quot;></i>'">
+        <i th:unless="${service.imageUrl != null and service.imageUrl != ''}" class="fas fa-spa" style="color:var(--rose);"></i>
+      </div>
+      <div class="service-body">
+        <h3 th:text="${service.name}">Service Name</h3>
+        <p th:text="${service.category + ' | ' + service.duration + ' mins'}">Category | Duration</p>
+        <div class="service-footer">
+          <span class="service-price" th:text="${'LKR ' + service.price}">LKR 0</span>
+          <button class="book-btn" th:attr="onclick='openModal(\'' + ${service.serviceId} + '\')'">Book Now</button>
+        </div>
+      </div>
+    </div>
+    
+    <div th:if="${#lists.isEmpty(services)}" style="grid-column: 1 / -1; text-align: center; color: var(--muted); padding: 3rem;">
+        No services available at the moment.
+    </div>
+  </div>
+</section>
+
+
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="logo-footer">Beauty <span>Salon</span></div>
+  <p>123 Flower Road, Colombo 03 &nbsp;|&nbsp; +94 11 234 5678 &nbsp;|&nbsp; hello@beautysalon.lk</p>
+  <div class="social">
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-tiktok"></i></a>
+  </div>
+  <p style="margin-top:2rem;font-size:0.75rem;">© 2026 All rights reserved.</p>
+</footer>
+
+<!-- BOOKING MODAL -->
+<div class="modal-overlay" id="bookingModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <h2>Book a Service</h2>
+    <div class="form-group">
+      <label>Select Service</label>
+      <select id="modalService">
+        <option value="">Choose a service…</option>
+        <option th:each="service : ${services}" th:value="${service.serviceId}" th:text="${service.name + ' – LKR ' + service.price}"></option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Select Stylist</label>
+      <select id="modalEmployee">
+        <option value="">Choose a stylist…</option>
+        <option>Nimal Perera – Hair Specialist</option>
+        <option>Kamala Silva – Skin Care Expert</option>
+        <option>Ravi Fernando – Nail Artist</option>
+        <option>Dilani Jayasinghe – Beauty Therapist</option>
+      </select>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Preferred Date</label>
+        <input type="date" id="modalDate">
+      </div>
+      <div class="form-group">
+        <label>Preferred Time</label>
+        <input type="time" id="modalTime">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Your Name</label>
+      <input type="text" id="modalName" placeholder="Full name">
+    </div>
+    <button class="btn-confirm" onclick="confirmBooking()"><i class="fas fa-check"></i> Confirm Booking</button>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script th:src="@{/js/customer-script.js}"></script>
+</body>
+</html>

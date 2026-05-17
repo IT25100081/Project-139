@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title layout:title-pattern="$CONTENT_TITLE - Beauty Salon">Admin Panel – Beauty Salon</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" th:href="@{/css/admin-style.css}">
+    
+    <th:block layout:fragment="css"></th:block>
+</head>
+<body>
+
+<!-- Overlay for mobile sidebar -->
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="closeMobileSidebar()"></div>
+
+<!-- ════ SIDEBAR ════ -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo-icon"><i class="fas fa-spa"></i></div>
+    <div class="logo-text">
+      <h1>Beauty <span>Salon</span></h1>
+      <p>Admin Dashboard</p>
+    </div>
+  </div>
+
+  <nav class="sidebar-nav">
+    <div class="nav-group-label">Overview</div>
+    <a th:href="@{/}" style="text-decoration: none;">
+        <div class="nav-item" data-title="Dashboard">
+        <i class="fas fa-chart-pie"></i>
+        <span class="nav-text">Dashboard</span>
+        </div>
+    </a>
+
+    <div class="nav-group-label">Management</div>
+    <div class="nav-item" data-title="Users">
+      <i class="fas fa-users"></i>
+      <span class="nav-text">User Management</span>
+    </div>
+    <div class="nav-item" data-title="Appointments">
+      <i class="fas fa-calendar-check"></i>
+      <span class="nav-text">Appointments</span>
+      <span class="nav-badge" id="pendingBadge">3</span>
+    </div>
+    <a th:href="@{/services}" style="text-decoration: none;">
+        <div class="nav-item" th:classappend="${activeNav == 'services'} ? 'active' : ''" data-title="Services">
+        <i class="fas fa-scissors"></i>
+        <span class="nav-text">Services</span>
+        </div>
+    </a>
+    <div class="nav-item" data-title="Staff">
+      <i class="fas fa-user-tie"></i>
+      <span class="nav-text">Staff / Stylists</span>
+    </div>
+
+    <div class="nav-group-label">System</div>
+    <div class="nav-item" data-title="Admins">
+      <i class="fas fa-shield-alt"></i>
+      <span class="nav-text">Admin Management</span>
+    </div>
+    <div class="nav-item" data-title="Reviews">
+      <i class="fas fa-star"></i>
+      <span class="nav-text">Feedback & Reviews</span>
+    </div>
+  </nav>
+
+  <div class="sidebar-footer">
+    <div class="user-av">AD</div>
+    <div class="user-meta">
+      <p>Super Admin</p>
+      <span>beautysalon.lk</span>
+    </div>
+  </div>
+</aside>
+
+<!-- ════ MAIN ════ -->
+<main class="main" id="mainContent">
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <div class="icon-btn menu-btn" onclick="toggleMobileSidebar()" title="Menu">
+        <i class="fas fa-bars"></i>
+      </div>
+      <div class="icon-btn" id="desktopToggleBtn" onclick="toggleDesktopSidebar()" title="Toggle Sidebar">
+        <i class="fas fa-bars"></i>
+      </div>
+      <h2 class="topbar-title" id="pageTitle" layout:fragment="pageTitle">Dashboard</h2>
+    </div>
+    <div class="topbar-right">
+      <div class="icon-btn" title="Notifications"><i class="fas fa-bell"></i></div>
+      <div class="icon-btn" title="Settings"><i class="fas fa-cog"></i></div>
+    </div>
+  </div>
+
+  <div class="page active" style="padding-top: 1.75rem;">
+      <div layout:fragment="content">
+          <!-- Page Content -->
+      </div>
+  </div>
+</main>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- JS -->
+<script th:src="@{/js/admin-script.js}"></script>
+<script>
+    // Overriding the go function from admin-script.js to prevent interference with backend routing
+    function go(id, el) {
+        console.log("Navigation to " + id + " clicked.");
+    }
+</script>
+<th:block layout:fragment="scripts"></th:block>
+
+</body>
+</html>
