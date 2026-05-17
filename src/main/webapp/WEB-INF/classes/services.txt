@@ -1,0 +1,9 @@
+1,Haircut & Styling,45.0,Expert haircut and styling services to give you the perfect look you desire.,https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=800&q=80
+2,Manicure & Pedicure,35.0,Professional nail care including shaping- cuticles- and your choice of premium polish.,https://images.unsplash.com/photo-1604654894610-df490998ea7e?auto=format&fit=crop&w=800&q=80
+3,Facial Treatment,60.0,Rejuvenating facial treatments tailored to your skin type for a healthy- glowing complexion.,https://images.unsplash.com/photo-1512290923902-8a9f81dc2069?auto=format&fit=crop&w=800&q=80
+4,Full Body Massage,80.0,Relaxing full body massage to relieve stress and tension in a peaceful environment.,https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=800&q=80
+5,Bridal Makeup,100.0,Stunning bridal makeup for your special day- crafted by our expert makeup artists.,https://images.unsplash.com/photo-1481325545291-943f4eee1bc9?auto=format&fit=crop&w=800&q=80
+6,Hair Coloring,75.0,Vibrant and long-lasting hair color services using high-quality- hair-friendly products.,https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=800&q=80
+7,Waxing,30.0,Smooth and professional waxing services for all areas- ensuring a comfortable experience.,https://images.unsplash.com/photo-1559599189-fe84ced487c9?auto=format&fit=crop&w=800&q=80
+8,Skin Treatment,55.0,Advanced skin treatments to address specific concerns and maintain skin health.,https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=800&q=80
+9,aaaaa,322242.0,aassas,service_images\1779047153300_q1.png

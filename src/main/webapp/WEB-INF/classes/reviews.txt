@@ -1,0 +1,4 @@
+1,1,1,Great haircut and styling service! Emma was very professional.
+2,2,2,Amazing manicure service. James did a fantastic job.
+3,1,3,The facial treatment was relaxing and effective.
+4,2,5,Perfect bridal makeup! Olivia made me look beautiful. 

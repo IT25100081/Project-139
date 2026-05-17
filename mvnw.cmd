@@ -1,1 +1,0 @@
-@REM Maven wrapper script

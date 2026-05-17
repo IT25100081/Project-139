@@ -1,59 +1,129 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.2.4</version>
-		<relativePath/>
-	</parent>
-	<groupId>com.group139</groupId>
-	<artifactId>beauty-salon-booking</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>beauty-salon-booking</name>
-	<description>Beauty Salon Appointment Booking System</description>
-	<properties>
-		<java.version>17</java.version>
-	</properties>
-	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-thymeleaf</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>nz.net.ultraq.thymeleaf</groupId>
-			<artifactId>thymeleaf-layout-dialect</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
-					<jvmArguments>--enable-native-access=ALL-UNNAMED</jvmArguments>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+  <groupId>com.salon</groupId>
+  <artifactId>beauty-salon</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>war</packaging>
+
+  <properties>
+    <maven.compiler.source>21</maven.compiler.source>
+    <maven.compiler.target>21</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <jakarta.servlet.version>6.1.0</jakarta.servlet.version>
+    <jakarta.jsp.version>4.0.0</jakarta.jsp.version>
+    <tomcat.version>11.0.4</tomcat.version>
+  </properties>
+
+  <dependencies>
+    <!-- Gson for JSON processing -->
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>2.10.1</version>
+    </dependency>
+
+    <!-- MySQL JDBC Driver -->
+    <dependency>
+      <groupId>com.mysql</groupId>
+      <artifactId>mysql-connector-j</artifactId>
+      <version>8.3.0</version>
+    </dependency>
+
+    <!-- Jakarta Servlet API -->
+    <dependency>
+      <groupId>jakarta.servlet</groupId>
+      <artifactId>jakarta.servlet-api</artifactId>
+      <version>${jakarta.servlet.version}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <!-- Jakarta JSP API -->
+    <dependency>
+      <groupId>jakarta.servlet.jsp</groupId>
+      <artifactId>jakarta.servlet.jsp-api</artifactId>
+      <version>${jakarta.jsp.version}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <!-- Jakarta Expression Language API -->
+    <dependency>
+      <groupId>jakarta.el</groupId>
+      <artifactId>jakarta.el-api</artifactId>
+      <version>6.0.0</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <!-- Tomcat Jasper (JSP Engine) -->
+    <dependency>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>tomcat-jasper</artifactId>
+      <version>${tomcat.version}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <!-- JSTL API and Implementation -->
+    <dependency>
+      <groupId>jakarta.servlet.jsp.jstl</groupId>
+      <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+      <version>3.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.web</groupId>
+      <artifactId>jakarta.servlet.jsp.jstl</artifactId>
+      <version>3.0.1</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <finalName>beauty-salon</finalName>
+    <plugins>
+      <!-- Maven War Plugin -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.4.0</version>
+        <configuration>
+          <failOnMissingWebXml>false</failOnMissingWebXml>
+        </configuration>
+      </plugin>
+
+      <!-- Maven Compiler Plugin -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.13.0</version>
+        <configuration>
+          <source>${maven.compiler.source}</source>
+          <target>${maven.compiler.target}</target>
+        </configuration>
+      </plugin>
+
+      <!-- Cargo Maven Plugin -->
+      <plugin>
+        <groupId>org.codehaus.cargo</groupId>
+        <artifactId>cargo-maven3-plugin</artifactId>
+        <version>1.10.11</version>
+        <configuration>
+          <container>
+            <containerId>tomcat10x</containerId>
+            <type>embedded</type>
+          </container>
+          <deployables>
+            <deployable>
+              <groupId>com.salon</groupId>
+              <artifactId>beauty-salon</artifactId>
+              <type>war</type>
+              <properties>
+                <context>/</context>
+              </properties>
+            </deployable>
+          </deployables>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 </project>
