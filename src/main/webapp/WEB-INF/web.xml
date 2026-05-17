@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
+  <display-name>Beauty Salon Web Application</display-name>
+
+  <!-- Welcome File Configuration -->
+  <welcome-file-list>
+    <welcome-file>HomeController</welcome-file>
+  </welcome-file-list>
+
+  <!-- JSP Configuration -->
+  <jsp-config>
+        <jsp-property-group>
+      <url-pattern>/index.jsp</url-pattern>
+      <url-pattern>/about.jsp</url-pattern>
+      <url-pattern>/privacy-policy.jsp</url-pattern>
+      <url-pattern>/customer/login.jsp</url-pattern>
+      <url-pattern>/customer/register.jsp</url-pattern>
+      <url-pattern>/customer/profile.jsp</url-pattern>
+      <url-pattern>/customer/editProfile.jsp</url-pattern>
+      <url-pattern>/customer/userDashboard.jsp</url-pattern>
+      <url-pattern>/customer/userDetails.jsp</url-pattern>
+      <url-pattern>/service/services.jsp</url-pattern>
+      <url-pattern>/service/serviceDetails.jsp</url-pattern>
+      <url-pattern>/booking/bookingForm.jsp</url-pattern>
+      <url-pattern>/booking/bookingConfirmation.jsp</url-pattern>
+      <url-pattern>/booking/bookings.jsp</url-pattern>
+      <url-pattern>/review/reviewForm.jsp</url-pattern>
+      <url-pattern>/review/reviewConfirmation.jsp</url-pattern>
+      <url-pattern>/employee/employeeDetails.jsp</url-pattern>
+      <page-encoding>UTF-8</page-encoding>
+      <scripting-invalid>false</scripting-invalid>
+      <include-prelude>/WEB-INF/jspf/header.jspf</include-prelude>
+      <include-coda>/WEB-INF/jspf/footer.jspf</include-coda>
+    </jsp-property-group>
+  </jsp-config>
+
+  <!-- JSP Servlet Configuration -->
+  <servlet>
+    <servlet-name>jsp</servlet-name>
+    <servlet-class>org.apache.jasper.servlet.JspServlet</servlet-class>
+    <init-param>
+      <param-name>fork</param-name>
+      <param-value>false</param-value>
+    </init-param>
+    <init-param>
+      <param-name>xpoweredBy</param-name>
+      <param-value>false</param-value>
+    </init-param>
+    <load-on-startup>3</load-on-startup>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>jsp</servlet-name>
+    <url-pattern>*.jsp</url-pattern>
+  </servlet-mapping>
+
+  <!-- Employee Controller Configuration -->
+  <servlet>
+    <servlet-name>EmployeeController</servlet-name>
+    <servlet-class>com.salon.employee.EmployeeController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EmployeeController</servlet-name>
+    <url-pattern>/EmployeeController</url-pattern>
+  </servlet-mapping>
+</web-app>
