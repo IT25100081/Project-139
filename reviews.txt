@@ -1,4 +1,0 @@
-R001,C001,S001,Thenuri,5,Excellent service!,2026-05-15,Approved
-R002,GUEST,S002,John Doe,4,Very good experience.,2026-05-16,Approved
-R003,faf,S006,aga,3,fafafaf,2026-05-16,Pending
-R004,c002,s001,vinuli,4,awsomeeeeeeee,2026-05-16,Pending
