@@ -1,6 +1,0 @@
-s001,Precision Haircut,Hair,30,800.0,/uploads/8e272dc2-549b-4e80-995b-4b7f8ec20772_photo-1596728325488-58c87691e9af.jpg
-S006,Hair Spa Treatment,Hair,2,1000.0,/uploads/2b45c4b1-eab9-4944-93b0-c25e4959df51_photo-1560066984-138dadb4c035.jpg
-S007,Luxury Manicure,Nail,20,2000.0,/uploads/784a2e46-1d02-4d2c-804e-ecf4c53bc5ca_photo-1604654894610-df63bc536371.jpg
-S006,Glow Facial,Skin,30,1000.0,/uploads/f9c8aff2-03ab-4e71-8869-7ebf66dd5fba_photo-1570172619644-dfd03ed5d881.avif
-S007,Pedicure Bliss,Nail,25,1200.0,/uploads/91e54d62-73ea-4ae2-a78c-4ed2840162fe_photo-1519415510236-718bdfcd89c8.jpg
-S008,Hair Colouring,Hair,30,1000.0,/uploads/baf0995b-2983-4339-af9e-06bf92de058e_photo-1522337360788-8b13dee7a37e.jpg

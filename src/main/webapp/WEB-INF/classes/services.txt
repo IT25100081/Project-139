@@ -6,4 +6,3 @@
 6,Hair Coloring,75.0,Vibrant and long-lasting hair color services using high-quality- hair-friendly products.,https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=800&q=80
 7,Waxing,30.0,Smooth and professional waxing services for all areas- ensuring a comfortable experience.,https://images.unsplash.com/photo-1559599189-fe84ced487c9?auto=format&fit=crop&w=800&q=80
 8,Skin Treatment,55.0,Advanced skin treatments to address specific concerns and maintain skin health.,https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=800&q=80
-9,aaaaa,322242.0,aassas,service_images\1779047153300_q1.png
