@@ -541,6 +541,12 @@
                         <div class="gallery-item" data-aos="zoom-in" data-aos-delay="500"><img
                                 src="${pageContext.request.contextPath}/images/barber-man-confident.jpg"
                                 alt="Gallery Image 6"></div>
+                        <div class="gallery-item" data-aos="zoom-in" data-aos-delay="600"><img
+                                src="${pageContext.request.contextPath}/images/photo-1570172619644-dfd03ed5d881.avif"
+                                alt="Gallery Image 7"></div>
+                        <div class="gallery-item" data-aos="zoom-in" data-aos-delay="700"><img
+                                src="${pageContext.request.contextPath}/images/photo-1596728325488-58c87691e9af.jpg"
+                                alt="Gallery Image 8"></div>
                     </div>
                 </section>
 
